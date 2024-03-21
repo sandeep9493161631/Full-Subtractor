@@ -1,0 +1,33 @@
+Code for Full Subtractor:-
+---------------------------
+module FullSubtractor(
+    input a,b,cin,
+    output d,bor
+    );
+    xor(w1,a,b);
+    and(w2,!a,b);
+    xor(d,w1,cin);
+    and(w3,!a,cin);
+    or(bor,w2,w3);
+endmodule
+
+Test Bench:-
+-------------
+module FullSubtractor_tb;
+reg a,b,cin;
+wire d,bor;
+FullSubtractor uut (.a(a),.b(b),.cin(cin),.d(d),.bor(bor));
+initial
+    begin
+        a=0;b=0;cin=0;#100;
+        a=0;b=0;cin=1;#100;
+        a=0;b=1;cin=0;#100;
+        a=0;b=1;cin=1;#100;
+        a=1;b=0;cin=0;#100;
+        a=1;b=0;cin=1;#100;
+        a=1;b=1;cin=0;#100;
+        a=1;b=1;cin=1;#100;
+        
+    end
+endmodule
+
